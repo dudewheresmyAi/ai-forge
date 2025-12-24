@@ -6,84 +6,88 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
+    --background: 220 15% 5%;
     --foreground: 0 0% 98%;
 
-    --card: 0 0% 7%;
+    --card: 220 15% 8%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 7%;
+    --popover: 220 15% 8%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 0 84% 50%;
+    --primary: 168 76% 42%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 12%;
+    --secondary: 220 10% 12%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 220 10% 18%;
+    --muted-foreground: 0 0% 55%;
 
-    --accent: 0 84% 50%;
+    --accent: 6 78% 57%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 50%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
-    --ring: 0 84% 50%;
+    --border: 220 10% 16%;
+    --input: 220 10% 16%;
+    --ring: 168 76% 42%;
 
     --radius: 0.75rem;
 
     /* Custom tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(0 84% 50%) 0%, hsl(15 90% 55%) 100%);
-    --gradient-dark: linear-gradient(180deg, hsl(0 0% 6%) 0%, hsl(0 0% 3%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 9%) 0%, hsl(0 0% 6%) 100%);
-    --shadow-glow: 0 0 60px hsl(0 84% 50% / 0.15);
-    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.4);
+    --teal: 168 76% 42%;
+    --coral: 6 78% 57%;
+    --gradient-teal: linear-gradient(135deg, hsl(168 76% 42%) 0%, hsl(175 70% 45%) 100%);
+    --gradient-coral: linear-gradient(135deg, hsl(6 78% 57%) 0%, hsl(20 85% 55%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(220 15% 6%) 0%, hsl(220 15% 3%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 15% 10%) 0%, hsl(220 15% 7%) 100%);
+    --shadow-glow-teal: 0 0 60px hsl(168 76% 42% / 0.2);
+    --shadow-glow-coral: 0 0 100px hsl(6 78% 57% / 0.35);
+    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.5);
 
     --font-heading: 'DM Sans', sans-serif;
     --font-body: 'Inter', sans-serif;
 
-    --sidebar-background: 0 0% 6%;
+    --sidebar-background: 220 15% 6%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 0 84% 50%;
+    --sidebar-primary: 168 76% 42%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent: 220 10% 12%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 0 84% 50%;
+    --sidebar-border: 220 10% 16%;
+    --sidebar-ring: 168 76% 42%;
   }
 
   .dark {
-    --background: 0 0% 4%;
+    --background: 220 15% 5%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 7%;
+    --card: 220 15% 8%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 7%;
+    --popover: 220 15% 8%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 84% 50%;
+    --primary: 168 76% 42%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 12%;
+    --secondary: 220 10% 12%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
-    --accent: 0 84% 50%;
+    --muted: 220 10% 18%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 6 78% 57%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 50%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
-    --ring: 0 84% 50%;
-    --sidebar-background: 0 0% 6%;
+    --border: 220 10% 16%;
+    --input: 220 10% 16%;
+    --ring: 168 76% 42%;
+    --sidebar-background: 220 15% 6%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 0 84% 50%;
+    --sidebar-primary: 168 76% 42%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent: 220 10% 12%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 0 84% 50%;
+    --sidebar-border: 220 10% 16%;
+    --sidebar-ring: 168 76% 42%;
   }
 }
 
@@ -109,17 +113,26 @@
 
 @layer components {
   .glass-card {
-    @apply bg-card/80 backdrop-blur-xl border border-border/50 rounded-xl;
+    @apply bg-card/90 backdrop-blur-xl border border-border/60 rounded-xl;
     background: var(--gradient-card);
   }
 
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-primary);
+    background-image: var(--gradient-teal);
+  }
+
+  .gradient-text-coral {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-coral);
   }
 
   .glow-effect {
-    box-shadow: var(--shadow-glow);
+    box-shadow: var(--shadow-glow-teal);
+  }
+
+  .glow-effect-coral {
+    box-shadow: var(--shadow-glow-coral);
   }
 
   .hover-lift {
@@ -128,7 +141,7 @@
 
   .hover-lift:hover {
     @apply -translate-y-1;
-    box-shadow: var(--shadow-glow);
+    box-shadow: 0 8px 30px hsl(168 76% 42% / 0.15);
   }
 
   .stat-card {
@@ -136,7 +149,7 @@
   }
 
   .feature-tag {
-    @apply px-3 py-1.5 text-sm bg-secondary/80 text-muted-foreground rounded-md border border-border/50;
+    @apply px-3 py-1.5 text-xs bg-secondary/80 text-muted-foreground rounded-md border border-border/40;
   }
 
   .section-padding {
@@ -145,6 +158,26 @@
 
   .container-padding {
     @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .teal-icon {
+    @apply text-primary;
+  }
+
+  .coral-icon {
+    @apply text-accent;
+  }
+
+  .coral-glow {
+    position: absolute;
+    right: -150px;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, hsl(6 78% 57% / 0.4) 0%, transparent 60%);
+    pointer-events: none;
+    filter: blur(80px);
   }
 }
 
@@ -183,8 +216,8 @@
   }
 
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px hsl(0 84% 50% / 0.3); }
-    50% { box-shadow: 0 0 40px hsl(0 84% 50% / 0.5); }
+    0%, 100% { box-shadow: 0 0 20px hsl(168 76% 42% / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(168 76% 42% / 0.5); }
   }
 
   .gradient-border {
@@ -197,7 +230,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: var(--gradient-primary);
+    background: var(--gradient-teal);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
