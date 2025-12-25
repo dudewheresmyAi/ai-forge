@@ -6,6 +6,9 @@ import { Services } from "@/components/sections/Services";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTA } from "@/components/sections/CTA";
 import { Footer } from "@/components/layout/Footer";
+import Contact from "@/components/sections/Contact";
+import Pricing from "@/components/sections/Pricing";
+import AIQuiz from "@/components/sections/AIQuiz";
 import { Helmet } from "react-helmet-async";
 
 const Index = () => {
@@ -55,8 +58,11 @@ const Index = () => {
           <Hero />
           <Stats />
           <Services />
+          <Pricing />
           <Features />
+          <AIQuiz />
           <CTA />
+          <Contact />
           <FAQ />
         </main>
         <Footer />
