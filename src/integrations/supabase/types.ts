@@ -47,6 +47,60 @@ export type Database = {
         }
         Relationships: []
       }
+      subscriptions: {
+        Row: {
+          amount: number
+          billing_period: string
+          created_at: string
+          current_period_end: string | null
+          current_period_start: string | null
+          id: string
+          payer_email: string
+          payer_name: string | null
+          payment_source: string | null
+          paypal_order_id: string
+          paypal_payer_id: string | null
+          plan_id: string
+          status: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          amount: number
+          billing_period: string
+          created_at?: string
+          current_period_end?: string | null
+          current_period_start?: string | null
+          id?: string
+          payer_email: string
+          payer_name?: string | null
+          payment_source?: string | null
+          paypal_order_id: string
+          paypal_payer_id?: string | null
+          plan_id: string
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          amount?: number
+          billing_period?: string
+          created_at?: string
+          current_period_end?: string | null
+          current_period_start?: string | null
+          id?: string
+          payer_email?: string
+          payer_name?: string | null
+          payment_source?: string | null
+          paypal_order_id?: string
+          paypal_payer_id?: string | null
+          plan_id?: string
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

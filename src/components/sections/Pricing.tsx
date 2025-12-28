@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Zap, Crown, Building2, ArrowRight } from "lucide-react";
+import { Check, Zap, Crown, Building2, ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
+import { usePayPal } from "@/hooks/usePayPal";
+import { toast } from "sonner";
 
 const plans = [
   {
+    id: "starter",
     name: "Starter",
     icon: Zap,
     description: "Perfect for small businesses starting their AI journey",
@@ -24,6 +27,7 @@ const plans = [
     cta: "Get Started",
   },
   {
+    id: "pro",
     name: "Pro",
     icon: Crown,
     description: "For growing companies ready to scale with AI",
@@ -45,6 +49,7 @@ const plans = [
     badge: "Most Popular",
   },
   {
+    id: "enterprise",
     name: "Enterprise",
     icon: Building2,
     description: "Custom solutions for large-scale operations",
@@ -68,6 +73,32 @@ const plans = [
 
 const Pricing = () => {
   const [isYearly, setIsYearly] = useState(false);
+  const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
+  const { createOrder } = usePayPal();
+
+  const handleSubscribe = async (plan: typeof plans[0]) => {
+    if (plan.monthlyPrice === null) {
+      // Enterprise - scroll to contact
+      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    const amount = isYearly ? plan.yearlyPrice! : plan.monthlyPrice;
+    
+    setLoadingPlan(plan.id);
+    try {
+      await createOrder({
+        planId: plan.id,
+        planName: plan.name,
+        amount,
+        isYearly,
+      });
+    } catch (error) {
+      toast.error("Failed to start checkout. Please try again.");
+    } finally {
+      setLoadingPlan(null);
+    }
+  };
 
   return (
     <section id="pricing" className="py-24 relative overflow-hidden">
@@ -174,9 +205,20 @@ const Pricing = () => {
               <Button
                 className={`w-full ${plan.highlight ? "" : "variant-outline"}`}
                 variant={plan.highlight ? "default" : "outline"}
+                onClick={() => handleSubscribe(plan)}
+                disabled={loadingPlan === plan.id}
               >
-                {plan.cta}
-                <ArrowRight className="ml-2 w-4 h-4" />
+                {loadingPlan === plan.id ? (
+                  <>
+                    <Loader2 className="mr-2 w-4 h-4 animate-spin" />
+                    Processing...
+                  </>
+                ) : (
+                  <>
+                    {plan.cta}
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </>
+                )}
               </Button>
             </motion.div>
           ))}
