@@ -1,57 +1,7 @@
 import { motion } from "framer-motion";
-import { 
-  Bot, 
-  Zap, 
-  Share2, 
-  Target, 
-  BarChart3, 
-  Megaphone, 
-  Palette, 
-  Rocket 
-} from "lucide-react";
-
-const services = [
-  {
-    icon: Bot,
-    title: "Agentic AI Solutions",
-    description: "Deploy autonomous AI agents that handle complex workflows, make decisions, and continuously improve their performance.",
-  },
-  {
-    icon: Zap,
-    title: "AI Automations",
-    description: "Eliminate repetitive tasks with intelligent automation that adapts to your processes and scales with your growth.",
-  },
-  {
-    icon: Share2,
-    title: "AI Social Media",
-    description: "AI-powered content creation, scheduling, and engagement optimization across all major platforms.",
-  },
-  {
-    icon: Target,
-    title: "Strategy Dominance",
-    description: "Data-driven strategic planning powered by predictive AI models and competitive intelligence.",
-  },
-  {
-    icon: BarChart3,
-    title: "Market Intelligence",
-    description: "Real-time market analysis, trend detection, and actionable insights from AI-processed data streams.",
-  },
-  {
-    icon: Megaphone,
-    title: "Digital Marketing",
-    description: "Full-stack digital marketing with AI optimization for maximum ROI across all channels.",
-  },
-  {
-    icon: Palette,
-    title: "Brand & Web Generation",
-    description: "AI-assisted brand identity creation and website generation that converts visitors into customers.",
-  },
-  {
-    icon: Rocket,
-    title: "Start-up Support",
-    description: "Comprehensive support for startups including AI strategy, implementation, and growth acceleration.",
-  },
-];
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import { services } from "@/data/services";
 
 export const Services = () => {
   return (
@@ -80,24 +30,29 @@ export const Services = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="glass-card p-6 hover-lift group cursor-pointer"
-            >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <service.icon className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-heading font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {service.description}
-              </p>
-            </motion.div>
+            <Link key={service.id} to={`/services/${service.id}`}>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="glass-card p-6 hover-lift group cursor-pointer h-full"
+              >
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <service.icon className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-heading font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  {service.description}
+                </p>
+                <div className="flex items-center gap-1 text-sm text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  Learn more
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
