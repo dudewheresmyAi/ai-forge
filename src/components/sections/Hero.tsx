@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ShaderBackground } from "@/components/ui/ShaderBackground";
+import { ParticleField } from "@/components/ui/ParticleField";
 import { Typewriter } from "@/components/ui/Typewriter";
 
 const typewriterWords = [
@@ -35,6 +36,9 @@ export const Hero = () => {
     <section className="relative min-h-screen pt-20 lg:pt-24 overflow-hidden">
       {/* Shader Background */}
       <ShaderBackground />
+      
+      {/* Particle/Star Field */}
+      <ParticleField />
       
       {/* Overlay gradient for content readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background" />
