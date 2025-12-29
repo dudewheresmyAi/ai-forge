@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { ShaderBackground } from "@/components/ui/ShaderBackground";
+import { Typewriter } from "@/components/ui/Typewriter";
 
 const typewriterWords = [
   "self-optimizing agents",
@@ -29,21 +30,16 @@ const features = [
 ];
 
 export const Hero = () => {
-  const [currentWord, setCurrentWord] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWord((prev) => (prev + 1) % typewriterWords.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section className="relative min-h-screen pt-20 lg:pt-24 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-secondary/20" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      {/* Coral glow on right side - matching reference image */}
+      {/* Shader Background */}
+      <ShaderBackground />
+      
+      {/* Overlay gradient for content readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background" />
+      
+      {/* Coral glow on right side */}
       <div className="coral-glow" />
 
       <div className="relative max-w-7xl mx-auto container-padding section-padding">
@@ -74,19 +70,16 @@ export const Hero = () => {
               </Button>
             </div>
 
-            {/* Typewriter */}
-            <div className="flex items-center gap-2 text-primary font-heading font-semibold">
+            {/* Enhanced Typewriter */}
+            <div className="flex items-center gap-2 text-primary font-heading font-semibold text-lg">
               <span>Deploy</span>
-              <motion.span
-                key={currentWord}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="inline-block"
-              >
-                {typewriterWords[currentWord]}
-              </motion.span>
-              <span className="w-0.5 h-5 bg-primary animate-pulse" />
+              <Typewriter
+                words={typewriterWords}
+                typingSpeed={70}
+                deletingSpeed={40}
+                pauseDuration={2500}
+                className="min-w-[200px]"
+              />
             </div>
           </motion.div>
 
