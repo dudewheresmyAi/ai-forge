@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Star, Quote, TrendingUp } from "lucide-react";
+import { LogoCarousel } from "@/components/ui/LogoCarousel";
 
 const testimonials = [
   {
@@ -90,6 +91,20 @@ export const Testimonials = () => {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             See how forward-thinking companies are transforming their revenue operations with autonomous AI agents.
           </p>
+        </motion.div>
+
+        {/* Partner / Client Logo Carousel */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-16"
+        >
+          <p className="text-center text-sm uppercase tracking-widest text-muted-foreground mb-6">
+            Trusted by teams at
+          </p>
+          <LogoCarousel />
         </motion.div>
 
         {/* Testimonial Cards Grid */}
