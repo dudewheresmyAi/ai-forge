@@ -12,6 +12,7 @@ import CheckoutCancel from "./pages/CheckoutCancel";
 import ServiceDetail from "./pages/ServiceDetail";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
+import StaticPage from "./pages/StaticPage";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/checkout/success" element={<CheckoutSuccess />} />
               <Route path="/checkout/cancel" element={<CheckoutCancel />} />
+              <Route path="/:slug" element={<StaticPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
