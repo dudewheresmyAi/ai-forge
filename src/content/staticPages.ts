@@ -13,6 +13,49 @@ const make = (
 ): StaticPage => ({ title, category, description, sections });
 
 export const staticPages: Record<string, StaticPage> = {
+  // Category overviews
+  product: make(
+    "Product",
+    "Product",
+    "The autonomous revenue platform — every capability, integration, and pricing tier in one place.",
+    [
+      { heading: "Features", body: "Self-optimizing agents, multi-model orchestration, real-time analytics, and enterprise-grade controls." },
+      { heading: "Integrations", body: "Native connectors to CRM, communications, data warehouses, and billing platforms you already run." },
+      { heading: "Pricing", body: "Transparent plans from Starter to Enterprise — scale with the value your agents deliver." },
+      { heading: "Changelog & Roadmap", body: "Ship logs from this month and a public roadmap you can vote on." },
+    ]
+  ),
+  company: make(
+    "Company",
+    "Company",
+    "Who we are, who we hire, and how to work with us.",
+    [
+      { heading: "About", body: "Our mission, story, and values — building the autonomous revenue layer for the next generation of companies." },
+      { heading: "Careers", body: "Join a small, senior team. Founding engineering, design, and GTM roles open now." },
+      { heading: "Press & Partners", body: "Media coverage, brand assets, and our growing solution and technology partner network." },
+    ]
+  ),
+  resources: make(
+    "Resources",
+    "Resources",
+    "Everything you need to build, ship, and operate AgenticForce agents in production.",
+    [
+      { heading: "Documentation", body: "Quickstarts, core concepts, and deployment patterns for production agents." },
+      { heading: "API Reference & Guides", body: "Programmatic control and step-by-step playbooks for the most common use cases." },
+      { heading: "Case Studies & Support", body: "Real customer outcomes plus community, email, and enterprise support channels." },
+    ]
+  ),
+  legal: make(
+    "Legal",
+    "Legal",
+    "Policies, certifications, and compliance documentation for AgenticForce.",
+    [
+      { heading: "Privacy & Terms", body: "How we collect and protect data, and the agreement between you and AgenticForce." },
+      { heading: "Security", body: "Infrastructure, access controls, and our responsible disclosure program." },
+      { heading: "GDPR & SOC 2", body: "Compliance frameworks we operate under, including SOC 2 Type II certification." },
+    ]
+  ),
+
   // Product
   features: make(
     "Features",
