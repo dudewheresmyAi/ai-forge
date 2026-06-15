@@ -13,6 +13,8 @@ import ServiceDetail from "./pages/ServiceDetail";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import StaticPage from "./pages/StaticPage";
+import BlogIndex from "./pages/BlogIndex";
+import BlogPost from "./pages/BlogPost";
 
 const queryClient = new QueryClient();
 
