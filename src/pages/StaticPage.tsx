@@ -18,6 +18,45 @@ export default function StaticPage() {
       <Helmet>
         <title>{page.title} | AgenticForce</title>
         <meta name="description" content={page.description} />
+        <link rel="canonical" href={`https://agenticforce.lovable.app/${slug}`} />
+        <meta property="og:title" content={`${page.title} | AgenticForce`} />
+        <meta property="og:description" content={page.description} />
+        <meta property="og:url" content={`https://agenticforce.lovable.app/${slug}`} />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: page.title,
+            description: page.description,
+            url: `https://agenticforce.lovable.app/${slug}`,
+            isPartOf: {
+              "@type": "WebSite",
+              name: "AgenticForce",
+              url: "https://agenticforce.lovable.app",
+            },
+            about: page.category,
+            mainEntity: {
+              "@type": "FAQPage",
+              mainEntity: page.sections.map((s) => ({
+                "@type": "Question",
+                name: s.heading,
+                acceptedAnswer: { "@type": "Answer", text: s.body },
+              })),
+            },
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://agenticforce.lovable.app" },
+              { "@type": "ListItem", position: 2, name: page.category },
+              { "@type": "ListItem", position: 3, name: page.title, item: `https://agenticforce.lovable.app/${slug}` },
+            ],
+          })}
+        </script>
       </Helmet>
       <Navbar />
       <main className="max-w-4xl mx-auto container-padding pt-32 pb-24">
