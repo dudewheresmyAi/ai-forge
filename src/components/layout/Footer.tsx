@@ -1,6 +1,10 @@
 import { Sparkles, Twitter, Linkedin, Github } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const footerLinks = {
+const slugify = (s: string) =>
+  s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+const footerLinks: Record<string, string[]> = {
   Product: ["Features", "Integrations", "Pricing", "Changelog", "Roadmap"],
   Company: ["About", "Blog", "Careers", "Press", "Partners"],
   Resources: ["Documentation", "API Reference", "Guides", "Case Studies", "Support"],
@@ -57,12 +61,12 @@ export const Footer = () => {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link}>
-                    <a
-                      href="#"
+                    <Link
+                      to={`/${slugify(link)}`}
                       className="text-sm text-muted-foreground hover:text-primary transition-colors"
                     >
                       {link}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
