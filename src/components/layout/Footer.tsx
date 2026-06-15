@@ -56,7 +56,9 @@ export const Footer = () => {
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
               <h4 className="font-heading font-semibold text-foreground mb-4">
-                {category}
+                <Link to={`/${slugify(category)}`} className="hover:text-primary transition-colors">
+                  {category}
+                </Link>
               </h4>
               <ul className="space-y-3">
                 {links.map((link) => (
